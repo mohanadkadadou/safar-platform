@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #08080e;
+  --ink2: #0f0f1a;
+  --ink3: #161622;
+  --ink4: #1c1c2c;
+  --card: #1e1e30;
+  --card2: #242438;
+  --rim: #2c2c44;
+  --rim2: #383858;
+  --fog: #505075;
+  --mist: #8080a8;
+  --ghost: #b0b0d0;
+  --snow: #f0f0f8;
+  --gold: #e8b84b;
+  --gold2: #c99a2e;
+  --teal: #2ec4b6;
+  --coral: #ff6b6b;
+  --sage: #7bc67e;
+  --violet: #9b8cf7;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--snow);
+  font-family: 'Syne', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body[dir="rtl"] {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--ink2); }
+::-webkit-scrollbar-thumb { background: var(--rim2); border-radius: 2px; }
+
+/* Display font */
+.font-display {
+  font-family: 'Cormorant Garamond', serif;
+}
+body[dir="rtl"] .font-display {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .4; transform: scale(1.5); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-6px); }
+  75%       { transform: translateX(6px); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.animate-fade-up { animation: fadeUp .7s ease both; }
+.animate-fade-up-1 { animation: fadeUp .7s ease .08s both; }
+.animate-fade-up-2 { animation: fadeUp .7s ease .16s both; }
+.animate-fade-up-3 { animation: fadeUp .7s ease .24s both; }
+.animate-fade-up-4 { animation: fadeUp .7s ease .32s both; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-pulse-dot { animation: pulse 2.5s infinite; }
+.animate-shake { animation: shake .35s ease; }
+.animate-spin-slow { animation: spin 1s linear infinite; }
+
+/* Gold gradient button */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: var(--ink);
+  font-weight: 700;
+  transition: all .18s;
+}
+.btn-gold:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(232,184,75,.3);
+}
+
+/* Card */
+.safar-card {
+  background: var(--card);
+  border: 1px solid var(--rim);
+  border-radius: 16px;
+}
+
+/* Input base */
+.safar-input {
+  background: var(--ink3);
+  border: 1px solid var(--rim);
+  border-radius: 9px;
+  padding: 11px 14px;
+  color: var(--snow);
+  outline: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color .18s;
+}
+.safar-input:focus {
+  border-color: rgba(232,184,75,.5);
+  background: var(--ink4);
+}
+
+/* Status pills */
+.status-published { background: rgba(123,198,126,.15); color: #7bc67e; border: 1px solid rgba(123,198,126,.25); }
+.status-voting    { background: rgba(232,184,75,.12);  color: #e8b84b; border: 1px solid rgba(232,184,75,.22); }
+.status-draft     { background: rgba(80,80,117,.2);    color: #505075; border: 1px solid rgba(80,80,117,.3);   }
+.status-closed    { background: rgba(255,107,107,.1);  color: #ff6b6b; border: 1px solid rgba(255,107,107,.2); }
+
+/* Loader spinner */
+.loader {
+  width: 20px; height: 20px;
+  border: 2px solid var(--rim2);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
